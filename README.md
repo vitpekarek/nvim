@@ -2,5 +2,7 @@
 
 ###### Required
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
-- [deno](https://github.com/denoland/deno)
+
+###### LSP Servers
+- [deno](https://github.com/denoland/deno) or [tsserver](https://github.com/theia-ide/typescript-language-server)
 - [eslint](https://www.npmjs.com/package/eslint)
