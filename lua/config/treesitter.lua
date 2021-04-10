@@ -1,3 +1,7 @@
+vim.g.indent_blankline_use_treesitter = true
+vim.g.indent_blankline_filetype_exclude = {'help', 'dashboard'}
+
+
 require'nvim-treesitter.configs'.setup {
     -- ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
     -- TODO seems to be broken
@@ -12,8 +16,17 @@ require'nvim-treesitter.configs'.setup {
         updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
         persist_queries = false -- Whether the query persists across vim sessions
     },
+    refactor = {
+        highlight_definitions = { enable = true },
+        highlight_current_scope = { enable = true }
+    },
     autotag = {enable = true},
     rainbow = {enable = true},
-    context_commentstring = {enable = true, config = {javascriptreact = {style_element = '{/*%s*/}'}}}
+    context_commentstring = {
+        enable = true, 
+        -- config = {
+        --     javascriptreact = {style_element = '{/*%s*/}'}
+        -- }
+    }
     -- refactor = {highlight_definitions = {enable = true}}
 }

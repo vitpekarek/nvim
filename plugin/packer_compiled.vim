@@ -36,9 +36,9 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\vitpe\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\barbar.nvim"
   },
-  ["coc.nvim"] = {
+  ["compe-tabnine"] = {
     loaded = true,
-    path = "C:\\Users\\vitpe\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\coc.nvim"
+    path = "C:\\Users\\vitpe\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\compe-tabnine"
   },
   ["galaxyline.nvim"] = {
     loaded = true,
@@ -56,6 +56,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\vitpe\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\indent-blankline.nvim"
   },
+  ["lspsaga.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\vitpe\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\lspsaga.nvim"
+  },
   ["nvim-comment"] = {
     loaded = true,
     path = "C:\\Users\\vitpe\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-comment"
@@ -63,6 +67,22 @@ _G.packer_plugins = {
   ["nvim-compe"] = {
     loaded = true,
     path = "C:\\Users\\vitpe\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-compe"
+  },
+  ["nvim-lightbulb"] = {
+    loaded = true,
+    path = "C:\\Users\\vitpe\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-lightbulb"
+  },
+  ["nvim-lsp-ts-utils"] = {
+    loaded = true,
+    path = "C:\\Users\\vitpe\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-lsp-ts-utils"
+  },
+  ["nvim-lspconfig"] = {
+    loaded = true,
+    path = "C:\\Users\\vitpe\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-lspconfig"
+  },
+  ["nvim-lspinstall"] = {
+    loaded = true,
+    path = "C:\\Users\\vitpe\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-lspinstall"
   },
   ["nvim-tree.lua"] = {
     loaded = true,
