@@ -1,4 +1,4 @@
-# nvim configuration with LSP
+# nvim Windows (lua) configuration with LSP
 
 ###### Required
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
