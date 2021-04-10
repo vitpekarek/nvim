@@ -8,6 +8,7 @@ vim.g.mapleader = ' '
 
 cmd 'syntax enable'
 cmd 'filetype plugin indent on'
+-- TODO: rework
 utils.opt('b', 'expandtab', true)
 utils.opt('b', 'shiftwidth', indent)
 utils.opt('b', 'smartindent', true)
@@ -24,6 +25,7 @@ utils.opt('o', 'wildmode', 'list:longest')
 utils.opt('w', 'number', true)
 utils.opt('w', 'relativenumber', false)
 utils.opt('o', 'clipboard','unnamed,unnamedplus')
+vim.o.guifont = "JetBrainsMono\\ Nerd\\ Font\\ Mono:h18"
 
 -- Highlight on yank
 cmd 'au TextYankPost * lua vim.highlight.on_yank {on_visual = false}'
@@ -58,4 +60,3 @@ cmd 'au TextYankPost * lua vim.highlight.on_yank {on_visual = false}'
 -- vim.o.updatetime = 300 -- Faster completion
 -- vim.o.timeoutlen = 100 -- By default timeoutlen is 1000 ms
 -- vim.o.clipboard = "unnamedplus" -- Copy paste between vim and everything else
--- vim.o.guifont = "JetBrainsMono\\ Nerd\\ Font\\ Mono:h18"

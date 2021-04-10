@@ -1,4 +1,5 @@
--- require('lsp.tsserver')
+require('lsp.tsserver')
+-- require('lsp.denols')
 require('lsp.lua')
 require('lsp.efm')
-require('lsp.denols')
+require('lsp.rust_analyzer')

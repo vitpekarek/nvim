@@ -1,18 +1,14 @@
 local eslint_d = {
---   lintCommand = "eslint_d -f unix --stdin --stdin-filename ${INPUT}",
---   lintIgnoreExitCode = true,
---   lintStdin = true,
---   lintFormats = {"%f:%l:%c: %m"},
     lintCommand = "eslint_d -f unix --stdin --stdin-filename ${INPUT}",
     lintStdin = true,
     lintFormats = {"%f:%l:%c: %m"},
     lintIgnoreExitCode = true,
-    formatCommand = "eslint_d --fix-to-stdout --stdin --stdin-filename=${INPUT}",
+    -- formatCommand = "eslint_d --fix-to-stdout --stdin --stdin-filename=${INPUT}",
     formatStdin = true
 }
 
 local prettier  = {
-  -- formatCommand = "./node_modules/.bin/prettier --stdin --stdin-filepath ${INPUT}",
+  -- formatCommand = "node_modules/.bin/prettier --stdin --stdin-filepath ${INPUT}",
   formatCommand = "prettier --stdin --stdin-filepath ${INPUT}",
   formatStdin = true
 }
@@ -32,15 +28,6 @@ local languages = {
   css = {prettier},
   markdown = {prettier},
 }
-
--- local eslint = {
---   lintCommand = "eslint_d -f unix --stdin --stdin-filename ${INPUT}",
---   lintStdin = true,
---   lintFormats = {"%f:%l:%c: %m"},
---   lintIgnoreExitCode = true,
---   formatCommand = "eslint_d --fix-to-stdout --stdin --stdin-filename=${INPUT}",
---   formatStdin = true
--- }
 
 require "lspconfig".efm.setup {
     -- on_attach = function(client)

@@ -25,6 +25,6 @@ require'telescope'.setup {
         -- mirror = true,
       }
     },
-    file_ignore_patterns = { 'tags' },
+    file_ignore_patterns = { 'tags', 'node_modules', 'dist', 'build' },
   }
 }
