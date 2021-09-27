@@ -1,72 +1,55 @@
---[[ " 
---let g:nvim_tree_auto_ignore_ft = 'startify' "empty by default, don't auto open tree on specific filetypes.
-let g:nvim_tree_hide_dotfiles = 1 "0 by default, this option hides files and folders starting with a dot `.`
-let g:nvim_tree_git_hl = 1 "0 by default, will enable file highlight for git attributes (can be used without the icons).
-" let g:nvim_tree_tab_open = 1 "0 by default, will open the tree when entering a new tab and the tree was previously open
-" let g:nvim_tree_width_allow_resize  = 1 "0 by default, will not resize the tree when opening a file
-let g:nvim_tree_show_icons = {
-    \ 'git': 1,
-    \ 'folders': 1,
-    \ 'files': 1,
-    \ }
 
-"If 0, do not show the icons for one of 'git' 'folder' and 'files'
-"1 by default, notice that if 'files' is 1, it will only display
-"if nvim-web-devicons is installed and on your runtimepath ]]
--- vim.g.nvim_tree_ignore = [ '.git', 'node_modules', '.cache' ] "empty by default
-vim.g.nvim_tree_disable_netrw = 0 --"1 by default, disables netrw
--- vim.g.nvim_tree_hijack_netrw = 0 --"1 by default, prevents netrw from automatically opening when opening directories (but lets you keep its other utilities)
-vim.g.nvim_tree_hide_dotfiles = 0 --0 by default, this option hides files and folders starting with a dot `.`
-vim.g.nvim_tree_indent_markers = 1 --"0 by default, this option shows indent markers when folders are open
-vim.g.nvim_tree_follow = 1 --"0 by default, this option allows the cursor to be updated when entering a buffer
-vim.g.nvim_tree_auto_close = 1 --0 by default, closes the tree when it's the last window
-vim.g.nvim_tree_auto_ignore_ft = 'dashboard' --"empty by default, don't auto open tree on specific filetypes.
-local tree_cb = require'nvim-tree.config'.nvim_tree_callback
-vim.g.nvim_tree_bindings = {
-    -- mappings
-    ["<CR>"] = tree_cb("edit"),
-    ["l"] = tree_cb("edit"),
-    ["o"] = tree_cb("edit"),
-    ["<2-LeftMouse>"] = tree_cb("edit"),
-    ["<2-RightMouse>"] = tree_cb("cd"),
-    ["<C-]>"] = tree_cb("cd"),
-    ["v"] = tree_cb("vsplit"),
-    ["s"] = tree_cb("split"),
-    ["<C-t>"] = tree_cb("tabnew"),
-    ["h"] = tree_cb("close_node"),
-    ["<BS>"] = tree_cb("close_node"),
-    ["<S-CR>"] = tree_cb("close_node"),
-    ["<Tab>"] = tree_cb("preview"),
-    ["I"] = tree_cb("toggle_ignored"),
-    ["H"] = tree_cb("toggle_dotfiles"),
-    ["R"] = tree_cb("refresh"),
-    ["a"] = tree_cb("create"),
-    ["d"] = tree_cb("remove"),
-    ["r"] = tree_cb("rename"),
-    ["<C-r>"] = tree_cb("full_rename"),
-    ["x"] = tree_cb("cut"),
-    ["c"] = tree_cb("copy"),
-    ["p"] = tree_cb("paste"),
-    ["[c"] = tree_cb("prev_git_item"),
-    ["]c"] = tree_cb("next_git_item"),
-    ["-"] = tree_cb("dir_up"),
-    ["q"] = tree_cb("close")
-}
-vim.g.nvim_tree_icons = {
-    default = '',
-    symlink = '',
-    git = {
-        unstaged = "",
-        staged = "✓",
-        unmerged = "",
-        renamed = "➜",
-        untracked = ""
-    },
-    folder = {
-        default = "",
-        open = "",
-        empty = "",
-        empty_open = "",
-        symlink = ""
+require'nvim-tree'.setup {
+  -- disables netrw completely
+  disable_netrw       = true,
+  -- hijack netrw window on startup
+  hijack_netrw        = true,
+  -- open the tree when running this setup function
+  open_on_setup       = false,
+  -- will not open on setup if the filetype is in this list
+  ignore_ft_on_setup  = {},
+  -- closes neovim automatically when the tree is the last **WINDOW** in the view
+  auto_close          = true,
+  -- opens the tree when changing/opening a new tab if the tree wasn't previously opened
+  open_on_tab         = false,
+  -- hijack the cursor in the tree to put it at the start of the filename
+  hijack_cursor       = false,
+  -- updates the root directory of the tree on `DirChanged` (when your run `:cd` usually) 
+  update_cwd          = true,
+  -- show lsp diagnostics in the signcolumn
+  lsp_diagnostics     = false,
+  -- update the focused file on `BufEnter`, un-collapses the folders recursively until it finds the file
+  update_focused_file = {
+    -- enables the feature
+    enable      = true,
+    -- update the root directory of the tree to the one of the folder containing the file if the file is not under the current root directory
+    -- only relevant when `update_focused_file.enable` is true
+    update_cwd  = true,
+    -- list of buffer names / filetypes that will not update the cwd if the file isn't found under the current root directory
+    -- only relevant when `update_focused_file.update_cwd` is true and `update_focused_file.enable` is true
+    ignore_list = {}
+  },
+  -- configuration options for the system open command (`s` in the tree by default)
+  system_open = {
+    -- the command to run this, leaving nil should work in most cases
+    cmd  = nil,
+    -- the command arguments as a list
+    args = {}
+  },
+
+  view = {
+    -- width of the window, can be either a number (columns) or a string in `%`
+    width = 35,
+    -- side of the tree, can be one of 'left' | 'right' | 'top' | 'bottom'
+    side = 'left',
+    -- if true the tree will resize itself after opening a file
+    auto_resize = false,
+    mappings = {
+      -- custom only false will merge the list with the default mappings
+      -- if true, it will only use your list to set the mappings
+      custom_only = false,
+      -- list of mappings to set on the tree manually
+      list = {}
     }
+  }
 }

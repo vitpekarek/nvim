@@ -1,3 +1,5 @@
+local on_attach = require('lsp.on_attach')
+
 local eslint_d = {
     lintCommand = "eslint_d -f unix --stdin --stdin-filename ${INPUT}",
     lintStdin = true,
@@ -14,7 +16,7 @@ local prettier  = {
 }
 
 local languages = {
-  --lua = {luafmt},
+  lua = {luafmt},
   typescript = {prettier, eslint_d},
   javascript = {prettier, eslint_d},
   typescriptreact = {prettier, eslint_d},
@@ -29,15 +31,10 @@ local languages = {
   markdown = {prettier},
 }
 
-require "lspconfig".efm.setup {
-    -- on_attach = function(client)
-    --     client.resolved_capabilities.document_formatting = true
-    --     client.resolved_capabilities.goto_definition = false
-    --     set_lsp_config(client)
-    -- end,
+return {
+    on_attach = on_attach,
     init_options = {documentFormatting = true},
     filetypes = { "python", "javascriptreact", "javascript", "javascript.jsx", "typescriptreact", "typescript", "typescript.tsx", "json" },
-    --root_dir = root_pattern(".git"),
     root_dir = function()
         return vim.fn.getcwd()
     end,

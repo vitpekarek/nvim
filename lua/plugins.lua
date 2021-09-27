@@ -15,68 +15,86 @@ vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile' -- Auto compile when th
 require('packer').init({display = {auto_clean = false}})
 
 return require('packer').startup(function(use)
-  -- Packer can manage itself as an optional plugin
-  use {'wbthomason/packer.nvim', opt = true}
+    -- Packer can manage itself as an optional plugin
+    use {'wbthomason/packer.nvim', opt = true}
 
-  -- Color scheme
-  use { 'sainnhe/gruvbox-material' }
+    -- Color schemes
+    -- use { 'sainnhe/gruvbox-material' }
+    -- use 'tiagovla/tokyodark.nvim'
+    use 'folke/tokyonight.nvim'
+    use 'folke/lsp-colors.nvim'
 
-  -- Fuzzy finder
-  use {
-      'nvim-telescope/telescope.nvim',
-      requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
-  }
+    -- Fuzzy finder
+    use {
+        'nvim-telescope/telescope.nvim',
+        requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+    }
 
-  -- LSP and completion
-  use { 'hrsh7th/nvim-compe' }
-  use { 'hrsh7th/vim-vsnip' }
-  use { 'hrsh7th/vim-vsnip-integ' }
-  use { 'rafamadriz/friendly-snippets'}
+    -- LSP and completion
+    use 'hrsh7th/nvim-compe'
+    use 'hrsh7th/vim-vsnip'
+    use 'hrsh7th/vim-vsnip-integ'
+    use 'rafamadriz/friendly-snippets'
     -- use { 'tzachar/compe-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-compe'}
-  use { 'tzachar/compe-tabnine', requires = 'hrsh7th/nvim-compe'}
-  use { 'neovim/nvim-lspconfig' }
-  use 'kabouzeid/nvim-lspinstall'
-  use 'glepnir/lspsaga.nvim'
-  use 'jose-elias-alvarez/nvim-lsp-ts-utils'
-  use 'kosayoda/nvim-lightbulb'
-  -- use 'neoclide/coc.nvim'
+    -- use { 'tzachar/compe-tabnine', requires = 'hrsh7th/nvim-compe'}
+    use 'neovim/nvim-lspconfig'
+    use 'kabouzeid/nvim-lspinstall'
+    -- use 'glepnir/lspsaga.nvim'
+    use 'jose-elias-alvarez/nvim-lsp-ts-utils'
+    -- use 'kosayoda/nvim-lightbulb'
+    -- use 'neoclide/coc.nvim'
 
-  -- Lua development
-  -- use { 'tjdevries/nlua.nvim' }
+    -- Snippets
+    use { 'ylcnfrht/vscode-python-snippet-pack' }
+    use { 'xabikos/vscode-javascript' }
+    use { 'golang/vscode-go' }
+    use { 'rust-lang/vscode-rust' }
 
-  -- Vim dispatch
-  -- use { 'tpope/vim-dispatch' }
+    -- Lua development
+    -- use { 'tjdevries/nlua.nvim' }
 
-  -- Fugitive for Git
-  -- use { 'tpope/vim-fugitive' }
-  use 'TimUntersberger/neogit'
+    -- Vim dispatch
+    -- use { 'tpope/vim-dispatch' }
 
-  -- Treesitter
-  use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
-  use 'nvim-treesitter/nvim-treesitter-refactor'
-  use 'nvim-treesitter/playground'
-  -- use 'p00f/nvim-ts-rainbow'
-  use {'lukas-reineke/indent-blankline.nvim', branch = 'lua'}
-  use 'JoosepAlviste/nvim-ts-context-commentstring'
+    -- Fugitive for Git
+    -- use { 'tpope/vim-fugitive' }
+    use { 
+        'TimUntersberger/neogit', 
+        requires = { 
+            -- 'nvim-lua/plenary.nvim',
+            'sindrets/diffview.nvim' 
+        }
+    }
+    use 'airblade/vim-gitgutter'
 
-  -- Status Line and Bufferline
-  use 'glepnir/galaxyline.nvim'
-  use 'romgrk/barbar.nvim'
+    -- Treesitter
+    use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+    use 'nvim-treesitter/nvim-treesitter-refactor'
+    -- use 'nvim-treesitter/playground'
+    -- use 'p00f/nvim-ts-rainbow'
+    -- use {'lukas-reineke/indent-blankline.nvim', branch = 'lua'}
+    use 'JoosepAlviste/nvim-ts-context-commentstring'
 
-  -- Icons
-  use 'kyazdani42/nvim-web-devicons'
-  use 'ryanoasis/vim-devicons'
+    -- Status Line and Bufferline
+    -- use 'glepnir/galaxyline.nvim'
+    use 'hoob3rt/lualine.nvim'
+    use 'romgrk/barbar.nvim'
 
-  -- Explorer
-  use 'kyazdani42/nvim-tree.lua'
+    -- Icons
+    use 'kyazdani42/nvim-web-devicons'
+    use 'ryanoasis/vim-devicons'
 
-  -- general
-  use { 'airblade/vim-rooter' }
-  -- use { 'terrortylor/nvim-comment' }
-  use { 'tpope/vim-commentary' }
-  use { 'andymass/vim-matchup' }
-  use { 'phaazon/hop.nvim' }
-  use { 'glepnir/dashboard-nvim' }
-  use { 'windwp/nvim-spectre' }
+    -- Explorer
+    use 'kyazdani42/nvim-tree.lua'
+
+    -- general
+    use { 'airblade/vim-rooter' }
+    -- use { 'terrortylor/nvim-comment' }
+    use { 'tpope/vim-commentary' }
+    use { 'andymass/vim-matchup' }
+    use { 'phaazon/hop.nvim' }
+    use { 'glepnir/dashboard-nvim' }
+    use { 'windwp/nvim-spectre' }
+    use { 'AckslD/nvim-neoclip.lua' }
 
 end)
