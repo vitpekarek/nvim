@@ -87,6 +87,9 @@ return require('packer').startup(function(use)
     -- Explorer
     use 'kyazdani42/nvim-tree.lua'
 
+    -- Terminal
+    use {"akinsho/toggleterm.nvim"}
+
     -- general
     use { 'airblade/vim-rooter' }
     -- use { 'terrortylor/nvim-comment' }
