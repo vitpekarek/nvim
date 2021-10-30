@@ -33,6 +33,9 @@ local languages = {
 
 return {
     on_attach = on_attach,
+    flags = {
+      debounce_text_changes = 150,
+    },
     init_options = {documentFormatting = true},
     filetypes = { "python", "javascriptreact", "javascript", "javascript.jsx", "typescriptreact", "typescript", "typescript.tsx", "json" },
     root_dir = function()

@@ -30,7 +30,12 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true;
 
 local servers = { "rust_analyzer" }
 for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup { on_attach = on_attach }
+  nvim_lsp[lsp].setup { 
+        on_attach = on_attach,
+        flags = {
+            debounce_text_changes = 150,
+        }
+    }
 end
 
 nvim_lsp.efm.setup(efm_config)
@@ -38,14 +43,21 @@ nvim_lsp.sumneko_lua.setup(lua_config)
 nvim_lsp.tsserver.setup(tsserver_config)
 
 -- LSP Enable diagnostics
-vim.lsp.handlers["textDocument/publishDiagnostics"] =
-    vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-        virtual_text = false,
-        underline = true,
-        signs = true,
-        update_in_insert = false
-    })
+vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+  virtual_text = false,
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+})
 
+-- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+--   virtual_text = {
+--     prefix = '■', -- Could be '●', '▎', 'x'
+--   }
+-- })
+
+vim.o.updatetime = 250
+vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false})]]
 -- Send diagnostics to quickfix list
 -- do
 --     local method = "textDocument/publishDiagnostics"

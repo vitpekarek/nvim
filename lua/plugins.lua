@@ -91,6 +91,7 @@ return require('packer').startup(function(use)
     use {"akinsho/toggleterm.nvim"}
 
     -- general
+    use { 'windwp/nvim-autopairs' }
     use { 'airblade/vim-rooter' }
     -- use { 'terrortylor/nvim-comment' }
     use { 'tpope/vim-commentary' }
