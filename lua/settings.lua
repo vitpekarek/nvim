@@ -34,3 +34,7 @@ utils.opt('o', 'clipboard','unnamed,unnamedplus')
 cmd 'au TextYankPost * lua vim.highlight.on_yank {on_visual = false}'
 cmd 'set noshowmode'
 
+-- Terminal title
+cmd 'set title'
+cmd [[set titlestring=%{hostname()}\ \ %F\ \ %{strftime('%Y-%m-%d\ %H:%M',getftime(expand('%')))}]]
+
