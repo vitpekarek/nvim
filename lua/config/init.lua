@@ -1,5 +1,5 @@
 require('config.colorscheme')
-require('config.compe')
+require('config.cmp')
 require('config.neogit')
 require('config.comment')
 require('config.nvimtree')

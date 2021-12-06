@@ -31,13 +31,14 @@ return require('packer').startup(function(use)
     }
 
     -- LSP and completion
-    use 'hrsh7th/nvim-compe'
-    use 'hrsh7th/vim-vsnip'
-    use 'hrsh7th/vim-vsnip-integ'
-    use 'rafamadriz/friendly-snippets'
+    use 'neovim/nvim-lspconfig'
+    use 'hrsh7th/cmp-nvim-lsp'
+    use 'hrsh7th/cmp-buffer'
+    use 'hrsh7th/cmp-path'
+    use 'hrsh7th/cmp-cmdline'
+    use 'hrsh7th/nvim-cmp'
     -- use { 'tzachar/compe-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-compe'}
     -- use { 'tzachar/compe-tabnine', requires = 'hrsh7th/nvim-compe'}
-    use 'neovim/nvim-lspconfig'
     use 'kabouzeid/nvim-lspinstall'
     -- use 'glepnir/lspsaga.nvim'
     use 'jose-elias-alvarez/nvim-lsp-ts-utils'
@@ -45,6 +46,9 @@ return require('packer').startup(function(use)
     -- use 'neoclide/coc.nvim'
 
     -- Snippets
+    use 'hrsh7th/vim-vsnip'
+    use 'hrsh7th/vim-vsnip-integ'
+    use 'rafamadriz/friendly-snippets'
     use { 'ylcnfrht/vscode-python-snippet-pack' }
     use { 'xabikos/vscode-javascript' }
     use { 'golang/vscode-go' }
