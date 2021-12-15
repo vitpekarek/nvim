@@ -96,7 +96,8 @@ return require('packer').startup(function(use)
 
     -- general
     use { 'windwp/nvim-autopairs' }
-    use { 'airblade/vim-rooter' }
+    -- use { 'airblade/vim-rooter' }
+    use { 'ahmedkhalf/project.nvim' }
     -- use { 'terrortylor/nvim-comment' }
     use { 'tpope/vim-commentary' }
     use { 'andymass/vim-matchup' }
