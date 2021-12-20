@@ -1,16 +1,28 @@
 local utils = require('utils')
 
- -- Setup nvim-cmp.
-local cmp = require'cmp'
+local has_words_before = function()
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
 
-cmp.setup({
+local feedkey = function(key, mode)
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
+end 
+
+ -- Setup nvim-cmp.
+local cmp = require('cmp')
+
+cmp.setup {
+    completion = {
+        autocomplete = false,
+    },
     snippet = {
         -- REQUIRED - you must specify a snippet engine
         expand = function(args)
-        vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-        -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-        -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-        -- require'snippy'.expand_snippet(args.body) -- For `snippy` users.
+            vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+            -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+            -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+            -- require'snippy'.expand_snippet(args.body) -- For `snippy` users.
         end,
     },
     mapping = {
@@ -25,7 +37,26 @@ cmp.setup({
         ['<CR>'] = cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Replace,
             select = true,
-        })
+        }),
+        ["<Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                cmp.select_next_item()
+            elseif vim.fn["vsnip#available"](1) == 1 then
+                feedkey("<Plug>(vsnip-expand-or-jump)", "")
+            elseif has_words_before() then
+                cmp.complete()
+            else
+                fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+            end
+        end, { "i", "s" }),
+
+        ["<S-Tab>"] = cmp.mapping(function()
+            if cmp.visible() then
+                cmp.select_prev_item()
+            elseif vim.fn["vsnip#jumpable"](-1) == 1 then
+                feedkey("<Plug>(vsnip-jump-prev)", "")
+            end
+        end, { "i", "s" }),
     },
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
@@ -36,7 +67,7 @@ cmp.setup({
     }, {
         { name = 'buffer' },
     })
-})
+}
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline('/', {
@@ -63,52 +94,4 @@ require('lspconfig')['rust_analyzer'].setup {
 require('lspconfig')['tsserver'].setup {
     capabilities = capabilities
 }
-
-
--- old compe
-
--- vim.o.completeopt = "menuone,noselect"
-
--- require'compe'.setup {
---     enabled = true;
---     autocomplete = true;
---     debug = false;
---     min_length = 1;
---     preselect = 'always';
---     throttle_time = 80;
---     source_timeout = 200;
---     resolve_timeout = 800;
---     incomplete_delay = 400;
---     max_abbr_width = 100;
---     max_kind_width = 100;
---     max_menu_width = 100;
---     documentation = {
---         border = { '', '' ,'', ' ', '', '', '', ' ' }, -- the border option is the same as `|help nvim_open_win|`
---         winhighlight = "NormalFloat:CompeDocumentation,FloatBorder:CompeDocumentationBorder",
---         max_width = 120,
---         min_width = 60,
---         max_height = math.floor(vim.o.lines * 0.3),
---         min_height = 1,
---     };
-
-
---     source = {
---         path = true;
---         buffer = true;
---         calc = true;
---         vsnip = true;
---         nvim_lsp = true;
---         nvim_lua = true;
---         spell = true;
---         tags = true;
---         snippets_nvim = true;
---         treesitter = true;
---   };
--- }
-
--- vim.cmd([[inoremap <silent><expr> <C-Space> compe#complete()]])
--- vim.cmd([[inoremap <silent><expr> <Tab>      compe#confirm(luaeval("require 'nvim-autopairs'.autopairs_cr()"))]])
--- vim.cmd([[inoremap <silent><expr> <C-e>     compe#close('<C-e>')]])
--- vim.cmd([[inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })]])
--- vim.cmd([[inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })]])
 
