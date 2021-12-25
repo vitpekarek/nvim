@@ -44,6 +44,7 @@ return require('packer').startup(function(use)
     use 'jose-elias-alvarez/nvim-lsp-ts-utils'
     -- use 'kosayoda/nvim-lightbulb'
     -- use 'neoclide/coc.nvim'
+    use 'jose-elias-alvarez/null-ls.nvim'
 
     -- Snippets
     use 'hrsh7th/vim-vsnip'

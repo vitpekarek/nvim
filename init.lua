@@ -1,4 +1,4 @@
-_G.__is_log = true
+_G.__is_log = false
 
 --In order for neovim to launch certain executables on Windows, it must append .cmd to the command name. A fix is in the works upstream, but until this is mainlined please the following somewhere in your init.vim (lua heredoc) or init.lua:
 -- vim.loop.spawn = (function ()
