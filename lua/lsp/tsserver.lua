@@ -16,4 +16,10 @@ M.setup = function(on_attach, capabilities)
     })
 end
 
+M.update_opts = function(opts)
+    opts.flags = {
+        debounce_text_changes = 150,
+    }
+end
+
 return M

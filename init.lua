@@ -22,4 +22,4 @@ require('plugins')
 require('config')
 
 -- LSP
-require('lsp')
+require('lsp').setup()

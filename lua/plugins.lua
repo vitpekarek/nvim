@@ -1,20 +1,7 @@
--- vim.cmd [[packadd packer.nvim]]
-local execute = vim.api.nvim_command
-local fn = vim.fn
+-- Only required if you have packer configured as `opt`
+vim.cmd [[packadd packer.nvim]]
 
-local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
-
-if fn.empty(fn.glob(install_path)) > 0 then
-    execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
-    execute 'packadd packer.nvim'
-end
-
-vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile' -- Auto compile when there are changes in plugins.lua
-
--- require('packer').init({display = {non_interactive = true}})
-require('packer').init({display = {auto_clean = false}})
-
-return require('packer').startup(function(use)
+return require('packer').startup(function()
     -- Packer can manage itself as an optional plugin
     use {'wbthomason/packer.nvim', opt = true}
 
@@ -36,33 +23,24 @@ return require('packer').startup(function(use)
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/cmp-path'
     use 'hrsh7th/cmp-cmdline'
+    use 'hrsh7th/cmp-emoji'
+    use 'saadparwaiz1/cmp_luasnip'
     use 'hrsh7th/nvim-cmp'
-    -- use { 'tzachar/compe-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-compe'}
-    -- use { 'tzachar/compe-tabnine', requires = 'hrsh7th/nvim-compe'}
-    use 'kabouzeid/nvim-lspinstall'
-    -- use 'glepnir/lspsaga.nvim'
+    use 'williamboman/nvim-lsp-installer'
     use 'jose-elias-alvarez/nvim-lsp-ts-utils'
-    -- use 'kosayoda/nvim-lightbulb'
-    -- use 'neoclide/coc.nvim'
     use 'jose-elias-alvarez/null-ls.nvim'
 
     -- Snippets
-    use 'hrsh7th/vim-vsnip'
-    use 'hrsh7th/vim-vsnip-integ'
+    use 'L3MON4D3/LuaSnip'
+    -- use 'hrsh7th/vim-vsnip'
+    -- use 'hrsh7th/vim-vsnip-integ'
     use 'rafamadriz/friendly-snippets'
     use { 'ylcnfrht/vscode-python-snippet-pack' }
     use { 'xabikos/vscode-javascript' }
-    use { 'golang/vscode-go' }
+    -- use { 'golang/vscode-go' }
     use { 'rust-lang/vscode-rust' }
 
-    -- Lua development
-    -- use { 'tjdevries/nlua.nvim' }
-
-    -- Vim dispatch
-    -- use { 'tpope/vim-dispatch' }
-
-    -- Fugitive for Git
-    -- use { 'tpope/vim-fugitive' }
+    -- Git
     use { 
         'TimUntersberger/neogit', 
         requires = { 
@@ -81,7 +59,6 @@ return require('packer').startup(function(use)
     use 'JoosepAlviste/nvim-ts-context-commentstring'
 
     -- Status Line and Bufferline
-    -- use 'glepnir/galaxyline.nvim'
     use 'hoob3rt/lualine.nvim'
     use 'romgrk/barbar.nvim'
 
