@@ -10,5 +10,5 @@ utils.opt('o', 'termguicolors', true)
 -- vim.g.tokyodark_enable_italic = true
 -- vim.g.tokyodark_color_gamma = "1.0"
 
--- vim.g.tokyonight_transparent = true 
+vim.g.tokyonight_transparent = true 
 cmd 'colorscheme tokyonight'
