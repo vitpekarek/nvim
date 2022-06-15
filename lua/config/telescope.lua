@@ -1,14 +1,14 @@
 local opts = { noremap=true, silent=true }
 
-vim.api.nvim_set_keymap('n', '<leader>of', '<cmd>lua require(\'telescope.builtin\').oldfiles()<cr>', opts)
-vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>lua require(\'telescope.builtin\').find_files()<cr>', opts)
-vim.api.nvim_set_keymap('n', '<leader>fg', '<cmd>lua require(\'telescope.builtin\').live_grep()<cr>', opts)
-vim.api.nvim_set_keymap('n', '<leader>fb', '<cmd>lua require(\'telescope.builtin\').buffers()<cr>', opts)
-vim.api.nvim_set_keymap('n', '<leader>fh', '<cmd>lua require(\'telescope.builtin\').help_tags()<cr>', opts)
-vim.api.nvim_set_keymap('n', '<leader>ws', '<cmd>lua require(\'telescope.builtin\').lsp_workspace_symbols()<cr>', opts)
-vim.api.nvim_set_keymap('n', '<leader>ds', '<cmd>lua require(\'telescope.builtin\').lsp_document_symbols()<cr>', opts)
-vim.api.nvim_set_keymap('n', '<leader>tq', '<cmd>Telescope quickfix<cr>', opts)
-vim.api.nvim_set_keymap('n', '<leader>tt', '<cmd>lua require(\'telescope.builtin\').treesitter()<cr>', opts)
+vim.api.nvim_set_keymap('n', '<space>of', '<cmd>lua require(\'telescope.builtin\').oldfiles()<cr>', opts)
+vim.api.nvim_set_keymap('n', '<space>ff', '<cmd>lua require(\'telescope.builtin\').find_files()<cr>', opts)
+vim.api.nvim_set_keymap('n', '<space>fg', '<cmd>lua require(\'telescope.builtin\').live_grep()<cr>', opts)
+vim.api.nvim_set_keymap('n', '<space>fb', '<cmd>lua require(\'telescope.builtin\').buffers()<cr>', opts)
+vim.api.nvim_set_keymap('n', '<space>fh', '<cmd>lua require(\'telescope.builtin\').help_tags()<cr>', opts)
+vim.api.nvim_set_keymap('n', '<space>ws', '<cmd>lua require(\'telescope.builtin\').lsp_workspace_symbols()<cr>', opts)
+vim.api.nvim_set_keymap('n', '<space>ds', '<cmd>lua require(\'telescope.builtin\').lsp_document_symbols()<cr>', opts)
+vim.api.nvim_set_keymap('n', '<space>tq', '<cmd>Telescope quickfix<cr>', opts)
+vim.api.nvim_set_keymap('n', '<space>tt', '<cmd>lua require(\'telescope.builtin\').treesitter()<cr>', opts)
 
 require'telescope'.setup {
   defaults = {

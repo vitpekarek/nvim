@@ -1,8 +1,8 @@
-local neogit = require("neogit")
+local neogit = require('neogit')
 local utils = require('utils')
 
-utils.map('n', '<Leader>gs', ':Neogit<CR>')  -- Git status
-utils.map('n', '<Leader>gc', ':Neogit commit<CR>')  -- Git status
+utils.map('n', '<space>gs', ':Neogit<CR>')
+utils.map('n', '<space>gc', ':Neogit commit<CR>')
 
 neogit.setup {
   disable_signs = false,

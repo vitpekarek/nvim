@@ -4,7 +4,7 @@ require'lualine'.setup {
     theme = 'tokyonight',
     component_separators = {' ', ' '},
     section_separators = {'', ''},
-    disabled_filetypes = {'NvimTree', 'dashboard', 'packer'}
+    disabled_filetypes = {'neo-tree', 'dashboard', 'packer'}
   },
   sections = {
     lualine_a = {'mode'},

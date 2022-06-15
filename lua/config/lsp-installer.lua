@@ -1,14 +1,11 @@
-local lsp_installer_servers = require'nvim-lsp-installer.servers'
-
-local server_available, requested_server = lsp_installer_servers.get_server("csharp_ls")
-if server_available then
-    requested_server:on_ready(function ()
-        local opts = {}
-        requested_server:setup(opts)
-    end)
-    if not requested_server:is_installed() then
-        -- Queue the server to be installed
-        requested_server:install()
-    end
-end
-
+require("nvim-lsp-installer").setup({
+    ensure_installed = { "rust_analyzer", "sumneko_lua", "tsserver" }, -- ensure these servers are always installed
+    automatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
+    ui = {
+        icons = {
+            server_installed = "✓",
+            server_pending = "➜",
+            server_uninstalled = "✗"
+        }
+    }
+})

@@ -4,7 +4,7 @@ local cmd = vim.cmd
 local indent = 4
 
 -- Map leader to space
-vim.g.mapleader = ' '
+-- vim.g.mapleader = ' '
 
 cmd 'syntax enable'
 cmd 'filetype plugin indent on'
