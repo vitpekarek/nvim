@@ -1,40 +1,59 @@
-local utils = require('utils')
+vim.opt.cmdheight = 0
 
-local cmd = vim.cmd
-local indent = 4
+vim.opt.exrc = true
+vim.opt.backspace = { 'indent', 'eol', 'start' }
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.tabstop = 4
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.smarttab = true
+vim.opt.expandtab = true
+vim.opt.autoindent = true
+vim.opt.smartindent = true
+vim.opt.linebreak = true
+vim.opt.sidescrolloff = 5
+vim.opt.ruler = true
+vim.opt.showcmd = true
+vim.opt.title = true
+vim.opt.joinspaces = false
+vim.opt.mouse = 'a'
+vim.opt.laststatus = 3
+vim.opt.cursorline = true
+vim.opt.wildmenu = true
+vim.opt.conceallevel = 2
+vim.opt.list = true
+vim.opt.listchars = {
+    tab = '→ ',
+    nbsp = '␣',
+    trail = '•',
+    extends = '▶',
+    precedes = '◀',
+}
+vim.opt.clipboard = vim.opt.clipboard + {'unnamed','unnamedplus'}
 
--- Map leader to space
--- vim.g.mapleader = ' '
+vim.opt.undofile = true
+-- vim.opt.undodir=os.getenv( "HOME" ) ..'/.config/nvim/undodir'
+vim.opt.scrolloff = 3
+vim.opt.autoread = true
+vim.opt.autowriteall = true
 
-cmd 'syntax enable'
-cmd 'filetype plugin indent on'
--- cmd 'set guicursor=""' -- To use windows terminal's cursor
--- TODO: rework
-utils.opt('b', 'expandtab', true)
-utils.opt('b', 'shiftwidth', indent)
-utils.opt('b', 'smartindent', true)
-utils.opt('b', 'tabstop', indent)
-utils.opt('o', 'hidden', true)
-utils.opt('o', 'ignorecase', true)
-utils.opt('o', 'scrolloff', 4)
-utils.opt('o', 'shiftround', true)
-utils.opt('o', 'smartcase', true)
-utils.opt('o', 'fileignorecase', true)
-utils.opt('o', 'splitbelow', true)
-utils.opt('o', 'splitright', true)
-utils.opt('o', 'wildmode', 'list:longest')
-utils.opt('w', 'number', true)
-utils.opt('w', 'relativenumber', false)
--- utils.opt('b', 'noshowmode', true)
-utils.opt('o', 'clipboard','unnamed,unnamedplus')
--- vim.o.guifont = "JetBrainsMono\\ Nerd\\ Font\\ Mono:h18"
--- utils.opt('o', 'guifont', 'FiraCode Nerd Font')
+--vim.opt.foldmethod = 'syntax'
+-- Update gutters 200 ms
+vim.opt.updatetime = 200
 
--- Highlight on yank
-cmd 'au TextYankPost * lua vim.highlight.on_yank {on_visual = false}'
-cmd 'set noshowmode'
+vim.opt.splitright = true
+vim.opt.splitbelow = true
 
--- Terminal title
--- cmd 'set title'
--- cmd [[set titlestring=%{hostname()}\ \ %F\ \ %{strftime('%Y-%m-%d\ %H:%M',getftime(expand('%')))}]]
+vim.opt.cindent = true
+vim.opt.cinoptions = {'N-s', 'g0', 'j1', '(s', 'm1'}
+
+-- Searching options
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.hlsearch = true
+vim.opt.incsearch = true
+vim.opt.showmatch = true
+vim.opt.guicursor=[[n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175]]
+vim.opt.termguicolors = true
 
